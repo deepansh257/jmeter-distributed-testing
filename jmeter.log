@@ -1,91 +1,92 @@
-2025-01-07 17:29:21,715 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
-2025-01-07 17:29:21,728 INFO o.a.j.JMeter: Loading user properties from: /opt/jmeter/bin/user.properties
-2025-01-07 17:29:21,728 INFO o.a.j.JMeter: Loading system properties from: /opt/jmeter/bin/system.properties
-2025-01-07 17:29:21,731 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
-2025-01-07 17:29:21,731 INFO o.a.j.JMeter: Version 5.6.3
-2025-01-07 17:29:21,731 INFO o.a.j.JMeter: java.version=11.0.25
-2025-01-07 17:29:21,731 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
-2025-01-07 17:29:21,731 INFO o.a.j.JMeter: os.name=Linux
-2025-01-07 17:29:21,731 INFO o.a.j.JMeter: os.arch=amd64
-2025-01-07 17:29:21,731 INFO o.a.j.JMeter: os.version=6.8.0-49-generic
-2025-01-07 17:29:21,731 INFO o.a.j.JMeter: file.encoding=UTF-8
-2025-01-07 17:29:21,731 INFO o.a.j.JMeter: java.awt.headless=true
-2025-01-07 17:29:21,731 INFO o.a.j.JMeter: Max memory     =1073741824
-2025-01-07 17:29:21,731 INFO o.a.j.JMeter: Available Processors =20
-2025-01-07 17:29:21,736 INFO o.a.j.JMeter: Default Locale=English (EN)
-2025-01-07 17:29:21,736 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
-2025-01-07 17:29:21,736 INFO o.a.j.JMeter: JMeterHome=/opt/jmeter
-2025-01-07 17:29:21,736 INFO o.a.j.JMeter: user.dir  =/home/nashtech/VSProjects/jmeter-distributed-system
-2025-01-07 17:29:21,736 INFO o.a.j.JMeter: PWD       =/home/nashtech/VSProjects/jmeter-distributed-system
-2025-01-07 17:29:21,804 INFO o.a.j.JMeter: IP: 192.168.1.12 Name: INL-96MGNX3 FullName: INL-96MGNX3
-2025-01-07 17:29:21,822 INFO o.a.j.s.FileServer: Default base='/home/nashtech/VSProjects/jmeter-distributed-system'
-2025-01-07 17:29:21,823 INFO o.a.j.s.FileServer: Set new base='/home/nashtech/Jmeter'
-2025-01-07 17:29:21,919 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
-2025-01-07 17:29:21,931 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
-2025-01-07 17:29:21,933 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
-2025-01-07 17:29:21,935 INFO o.a.j.s.SaveService: Loading file: /home/nashtech/Jmeter/First_HTTP_Request.jmx
-2025-01-07 17:29:21,968 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
-2025-01-07 17:29:21,968 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
-2025-01-07 17:29:21,968 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
-2025-01-07 17:29:21,968 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
-2025-01-07 17:29:21,968 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
-2025-01-07 17:29:21,968 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
-2025-01-07 17:29:21,986 INFO o.a.j.JMeter: Creating summariser <summary>
-2025-01-07 17:29:21,994 INFO o.a.j.e.StandardJMeterEngine: Running the test!
-2025-01-07 17:29:21,994 INFO o.a.j.s.SampleEvent: List of sample_variables: []
-2025-01-07 17:29:21,994 INFO o.a.j.s.SampleEvent: List of sample_variables: []
-2025-01-07 17:29:22,000 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
-2025-01-07 17:29:22,000 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
-2025-01-07 17:29:22,169 INFO o.a.j.JMeter: Running test (1736251162169)
-2025-01-07 17:29:22,181 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : First Thread Group
-2025-01-07 17:29:22,181 INFO o.a.j.e.StandardJMeterEngine: Starting 10 threads for group First Thread Group.
-2025-01-07 17:29:22,181 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
-2025-01-07 17:29:22,181 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=10 ramp-up=20 delayedStart=false
-2025-01-07 17:29:22,189 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-1
-2025-01-07 17:29:22,191 INFO o.a.j.t.ThreadGroup: Started thread group number 1
-2025-01-07 17:29:22,191 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
-2025-01-07 17:29:22,200 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = INL-96MGNX3
-2025-01-07 17:29:22,204 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
-2025-01-07 17:29:22,205 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
-2025-01-07 17:29:22,205 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
-2025-01-07 17:29:22,205 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
-2025-01-07 17:29:22,205 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
-2025-01-07 17:29:22,253 INFO o.a.j.p.h.s.h.LazyLayeredConnectionSocketFactory: Setting up HTTPS TrustAll Socket Factory
-2025-01-07 17:29:22,257 INFO o.a.j.u.JsseSSLManager: Using default SSL protocol: TLS
-2025-01-07 17:29:22,257 INFO o.a.j.u.JsseSSLManager: SSL session context: per-thread
-2025-01-07 17:29:22,664 INFO o.a.j.u.SSLManager: JmeterKeyStore Location:  type JKS
-2025-01-07 17:29:22,666 INFO o.a.j.u.SSLManager: KeyStore created OK
-2025-01-07 17:29:22,666 WARN o.a.j.u.SSLManager: Keystore file not found, loading empty keystore
-2025-01-07 17:29:23,662 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-1
-2025-01-07 17:29:23,662 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-1
-2025-01-07 17:29:24,186 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-2
-2025-01-07 17:29:25,495 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-2
-2025-01-07 17:29:25,495 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-2
-2025-01-07 17:29:26,186 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-3
-2025-01-07 17:29:27,442 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-3
-2025-01-07 17:29:27,442 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-3
-2025-01-07 17:29:28,184 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-4
-2025-01-07 17:29:29,489 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-4
-2025-01-07 17:29:29,489 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-4
-2025-01-07 17:29:30,184 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-5
-2025-01-07 17:29:31,435 INFO o.a.j.r.Summariser: summary +      5 in 00:00:09 =    0.5/s Avg:  1303 Min:  1245 Max:  1417 Err:     0 (0.00%) Active: 1 Started: 5 Finished: 4
-2025-01-07 17:29:31,435 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-5
-2025-01-07 17:29:31,435 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-5
-2025-01-07 17:29:32,184 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-6
-2025-01-07 17:29:33,483 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-6
-2025-01-07 17:29:33,483 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-6
-2025-01-07 17:29:34,183 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-7
-2025-01-07 17:29:35,429 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-7
-2025-01-07 17:29:35,429 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-7
-2025-01-07 17:29:36,183 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-8
-2025-01-07 17:29:37,476 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-8
-2025-01-07 17:29:37,476 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-8
-2025-01-07 17:29:38,183 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-9
-2025-01-07 17:29:39,423 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-9
-2025-01-07 17:29:39,423 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-9
-2025-01-07 17:29:40,183 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-10
-2025-01-07 17:29:41,470 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-10
-2025-01-07 17:29:41,471 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-10
-2025-01-07 17:29:41,472 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
-2025-01-07 17:29:41,473 INFO o.a.j.r.Summariser: summary +      5 in 00:00:10 =    0.5/s Avg:  1269 Min:  1237 Max:  1296 Err:     0 (0.00%) Active: 0 Started: 10 Finished: 10
-2025-01-07 17:29:41,474 INFO o.a.j.r.Summariser: summary =     10 in 00:00:19 =    0.5/s Avg:  1286 Min:  1237 Max:  1417 Err:     0 (0.00%)
+2025-01-17 14:09:54,258 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2025-01-17 14:09:54,281 INFO o.a.j.JMeter: Loading user properties from: /opt/jmeter/bin/user.properties
+2025-01-17 14:09:54,282 INFO o.a.j.JMeter: Loading system properties from: /opt/jmeter/bin/system.properties
+2025-01-17 14:09:54,286 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2025-01-17 14:09:54,287 INFO o.a.j.JMeter: Version 5.6.3
+2025-01-17 14:09:54,287 INFO o.a.j.JMeter: java.version=11.0.25
+2025-01-17 14:09:54,287 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2025-01-17 14:09:54,287 INFO o.a.j.JMeter: os.name=Linux
+2025-01-17 14:09:54,287 INFO o.a.j.JMeter: os.arch=amd64
+2025-01-17 14:09:54,287 INFO o.a.j.JMeter: os.version=6.8.0-51-generic
+2025-01-17 14:09:54,287 INFO o.a.j.JMeter: file.encoding=UTF-8
+2025-01-17 14:09:54,287 INFO o.a.j.JMeter: java.awt.headless=true
+2025-01-17 14:09:54,287 INFO o.a.j.JMeter: Max memory     =1073741824
+2025-01-17 14:09:54,287 INFO o.a.j.JMeter: Available Processors =20
+2025-01-17 14:09:54,293 INFO o.a.j.JMeter: Default Locale=English (EN)
+2025-01-17 14:09:54,294 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2025-01-17 14:09:54,294 INFO o.a.j.JMeter: JMeterHome=/opt/jmeter
+2025-01-17 14:09:54,294 INFO o.a.j.JMeter: user.dir  =/home/nashtech/VSProjects/jmeter-distributed-system
+2025-01-17 14:09:54,294 INFO o.a.j.JMeter: PWD       =/home/nashtech/VSProjects/jmeter-distributed-system
+2025-01-17 14:09:54,398 INFO o.a.j.JMeter: IP: 192.168.1.11 Name: INL-96MGNX3 FullName: INL-96MGNX3
+2025-01-17 14:09:54,408 INFO o.a.j.s.FileServer: Default base='/home/nashtech/VSProjects/jmeter-distributed-system'
+2025-01-17 14:09:54,409 INFO o.a.j.s.FileServer: Set new base='/home/nashtech/Jmeter'
+2025-01-17 14:09:54,556 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2025-01-17 14:09:54,574 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2025-01-17 14:09:54,575 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2025-01-17 14:09:54,577 INFO o.a.j.s.SaveService: Loading file: /home/nashtech/Jmeter/First_HTTP_Request.jmx
+2025-01-17 14:09:54,608 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2025-01-17 14:09:54,608 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2025-01-17 14:09:54,608 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2025-01-17 14:09:54,608 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2025-01-17 14:09:54,608 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2025-01-17 14:09:54,608 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2025-01-17 14:09:54,625 INFO o.a.j.JMeter: Creating summariser <summary>
+2025-01-17 14:09:54,632 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2025-01-17 14:09:54,632 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2025-01-17 14:09:54,632 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2025-01-17 14:09:54,637 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2025-01-17 14:09:54,637 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2025-01-17 14:09:54,786 WARN o.a.j.r.ResultCollector: Error creating directories for /path/to/your
+2025-01-17 14:09:54,787 INFO o.a.j.JMeter: Running test (1737103194787)
+2025-01-17 14:09:54,797 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : First Thread Group
+2025-01-17 14:09:54,797 INFO o.a.j.e.StandardJMeterEngine: Starting 10 threads for group First Thread Group.
+2025-01-17 14:09:54,797 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2025-01-17 14:09:54,797 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=10 ramp-up=20 delayedStart=false
+2025-01-17 14:09:54,804 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2025-01-17 14:09:54,804 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2025-01-17 14:09:54,804 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-1
+2025-01-17 14:09:54,817 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = INL-96MGNX3
+2025-01-17 14:09:54,820 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2025-01-17 14:09:54,820 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2025-01-17 14:09:54,820 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
+2025-01-17 14:09:54,820 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2025-01-17 14:09:54,820 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2025-01-17 14:09:55,968 INFO o.a.j.p.h.s.h.LazyLayeredConnectionSocketFactory: Setting up HTTPS TrustAll Socket Factory
+2025-01-17 14:09:55,976 INFO o.a.j.u.JsseSSLManager: Using default SSL protocol: TLS
+2025-01-17 14:09:55,976 INFO o.a.j.u.JsseSSLManager: SSL session context: per-thread
+2025-01-17 14:09:56,802 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-2
+2025-01-17 14:09:56,868 INFO o.a.j.u.SSLManager: JmeterKeyStore Location:  type JKS
+2025-01-17 14:09:56,869 INFO o.a.j.u.SSLManager: KeyStore created OK
+2025-01-17 14:09:56,870 WARN o.a.j.u.SSLManager: Keystore file not found, loading empty keystore
+2025-01-17 14:09:58,800 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-3
+2025-01-17 14:09:58,905 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-1
+2025-01-17 14:09:58,905 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-1
+2025-01-17 14:09:59,918 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-2
+2025-01-17 14:09:59,919 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-2
+2025-01-17 14:10:00,800 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-4
+2025-01-17 14:10:02,799 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-5
+2025-01-17 14:10:02,889 INFO o.a.j.r.Summariser: summary +      3 in 00:00:08 =    0.4/s Avg:  3747 Min:  3110 Max:  4083 Err:     3 (100.00%) Active: 3 Started: 5 Finished: 2
+2025-01-17 14:10:02,890 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-3
+2025-01-17 14:10:02,890 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-3
+2025-01-17 14:10:04,800 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-6
+2025-01-17 14:10:04,833 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-4
+2025-01-17 14:10:04,834 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-4
+2025-01-17 14:10:06,800 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-7
+2025-01-17 14:10:06,880 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-5
+2025-01-17 14:10:06,880 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-5
+2025-01-17 14:10:08,215 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-6
+2025-01-17 14:10:08,216 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-6
+2025-01-17 14:10:08,800 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-8
+2025-01-17 14:10:09,137 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-7
+2025-01-17 14:10:09,138 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-7
+2025-01-17 14:10:10,800 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-9
+2025-01-17 14:10:10,874 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-8
+2025-01-17 14:10:10,874 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-8
+2025-01-17 14:10:12,798 INFO o.a.j.t.JMeterThread: Thread started: First Thread Group 1-10
+2025-01-17 14:10:13,844 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-9
+2025-01-17 14:10:13,844 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-9
+2025-01-17 14:10:17,982 INFO o.a.j.t.JMeterThread: Thread is done: First Thread Group 1-10
+2025-01-17 14:10:17,983 INFO o.a.j.t.JMeterThread: Thread finished: First Thread Group 1-10
+2025-01-17 14:10:17,983 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2025-01-17 14:10:17,984 INFO o.a.j.r.Summariser: summary +      7 in 00:00:15 =    0.5/s Avg:  3449 Min:  2071 Max:  5181 Err:     7 (100.00%) Active: 0 Started: 10 Finished: 10
+2025-01-17 14:10:17,985 INFO o.a.j.r.Summariser: summary =     10 in 00:00:23 =    0.4/s Avg:  3538 Min:  2071 Max:  5181 Err:    10 (100.00%)
