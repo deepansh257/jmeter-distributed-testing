@@ -7,11 +7,12 @@ const { spawn } = require('child_process');
 const masterIp = process.env.MASTER_IP;
 const slaveIps = process.env.SLAVE_IPS.split(',');
 const jmeterDir = process.env.JMETER_DIR;
-// const serverPort = parseInt(process.env.SERVER_PORT);
 const threadDistribution = process.env.THREAD_DISTRIBUTION.split(',').map(num => parseInt(num));
 const jmeterVersion = process.env.JMETER_VERSION;
 const testPlanPath = process.env.TEST_PLAN_PATH; // Absolute path to .jmx file
 const resultPath = process.env.RESULT_PATH; // Absolute path to result .jtl file
+const username = process.env.SSH_USERNAME;  // Loaded from environment variables
+const password = process.env.SSH_PASSWORD; 
 
 // Function to execute commands on remote machines via SSH
 function executeRemoteCommand(ip, command, callback) {
@@ -42,155 +43,86 @@ function executeRemoteCommand(ip, command, callback) {
     });
 }
 
-// Function to install JMeter (if not already installed)
+// Function to check and install JMeter on a remote machine
 function installJMeter(ip, callback) {
     const checkJMeterCommand = `PATH=$PATH:${jmeterDir}/bin; which jmeter || echo "not found"`;
-        // Run the check locally
-        executeRemoteCommand(ip, checkJMeterCommand, (err, result) => {
-            if (err) {
-                callback(err);
-                return;
-            }
-            if (result && result.trim() === 'not found') {
-                const downloadUrl = `https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${jmeterVersion}.tgz`;
-                const installCommand = `
-                    wget ${downloadUrl} -O /tmp/apache-jmeter-${jmeterVersion}.tgz && \
-                    tar -xvzf /tmp/apache-jmeter-${jmeterVersion}.tgz -C /opt && \
-                    rm /tmp/apache-jmeter-${jmeterVersion}.tgz && \
-                    ln -s /opt/apache-jmeter-${jmeterVersion} /opt/jmeter
-                `;
-                const setPathCommand = 'echo "export PATH=$PATH:/opt/jmeter/bin" >> ~/.bashrc && source ~/.bashrc';
-                
-                executeRemoteCommand(ip, setPathCommand, (err) => {
-                    if (err) {
-                        callback(err);
-                        return;
-                    }
-                    executeRemoteCommand(ip, installCommand, callback);
-                });
-            } else {
-                const message = 'JMeter is already installed';
-                callback(null, message);
-            }
-        });
-}
-
-// Function to configure and start JMeter slave
-function startJMeterSlave(ip, serverPort, port, callback) {
-    console.log(`Checking port ${port} availability for slave on ${ip}...`);
-    checkPortAvailability(serverPort, (err) => {
+    executeRemoteCommand(ip, checkJMeterCommand, (err, result) => {
         if (err) {
-            console.error(`Port check failed: ${err.message}`);
-            return callback(err);
+            callback(err);
+            return;
         }
-        console.log(`Starting slave on IP: ${ip}, Port: ${port}`);
-        const slaveCommand = `cd ${jmeterDir}/bin && ./jmeter-server -Dserver_port=${serverPort} -Djava.rmi.server.hostname=${ip} -Dserver.rmi.localport=${port} -Dserver.rmi.port=${serverPort} &`;
-        executeRemoteCommand(ip, slaveCommand, (err, stdout) => {
-            if (err) {
-                console.error(`Error starting slave on ${ip}:`, err);
-                return callback(err);
-            }
-            console.log(`Slave started successfully on ${ip}:${port}`);
-            callback(null, stdout);
-        });
+        if (result && result.trim() === 'not found') {
+            const downloadUrl = `https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${jmeterVersion}.tgz`;
+            const installCommand = `
+                wget ${downloadUrl} -O /tmp/apache-jmeter-${jmeterVersion}.tgz && \
+                tar -xvzf /tmp/apache-jmeter-${jmeterVersion}.tgz -C /opt && \
+                rm /tmp/apache-jmeter-${jmeterVersion}.tgz && \
+                ln -s /opt/apache-jmeter-${jmeterVersion} /opt/jmeter
+            `;
+            const setPathCommand = 'echo "export PATH=$PATH:/opt/jmeter/bin" >> ~/.bashrc && source ~/.bashrc';
+            executeRemoteCommand(ip, `${installCommand} && ${setPathCommand}`, callback);
+        } else {
+            const message = `JMeter is already installed on ${ip}`;
+            callback(null, message);
+        }
     });
 }
 
-function logWithTimestamp(message) {
-    const timestamp = new Date().toISOString();
-    console.log(`[${timestamp}] ${message}`);
-}
-
-
-// Function to configure the master JMeter (remote_hosts)
+// Function to configure the master to instruct slaves
 function configureMaster(ip, remoteHosts, callback) {
     const configFile = `${jmeterDir}/bin/jmeter.properties`;
     const remoteHostsLine = `remote_hosts=${remoteHosts.join(',')}`;
     const command = `echo "${remoteHostsLine}" >> ${configFile}`;
-        executeRemoteCommand(ip, command, callback);
+    executeRemoteCommand(ip, command, callback);
 }
 
-// Function to start the JMeter test on master
-function startJMeterMaster(ip, callback) {
-    const masterCommand = `${jmeterDir}/bin/jmeter -n -t ${testPlanPath} -l ${resultPath}`;
-        executeRemoteCommand(ip, masterCommand, callback);
+// Function to start tests on all slaves from the master
+function startTestsOnSlaves(masterIp, callback) {
+    const masterCommand = `${jmeterDir}/bin/jmeter -n -r -t ${testPlanPath} -l ${resultPath}`;
+    executeRemoteCommand(masterIp, masterCommand, callback);
 }
-
-function checkPortAvailability(port, callback) {
-    const findCommand = `netstat -tuln | grep ${port}`;
-    const killCommand = `lsof -ti:${port} | xargs -r kill -9`;
-
-    // Check if the port is in use
-    exec(findCommand, (err, stdout) => {
-        if (stdout && stdout.includes(port)) {
-            console.log(`Port ${port} is in use. Attempting to free it...`);
-
-            // Kill processes using the port
-            exec(killCommand, (killErr) => {
-                if (killErr) {
-                    console.error(`Failed to kill processes on port ${port}:`, killErr.message);
-                    callback(killErr);
-                    return;
-                }
-                console.log(`Successfully freed port ${port}.`);
-                callback(null); // Port is now available
-            });
-        } else {
-            console.log(`Port ${port} is available.`);
-            callback(null); // Port is available
-        }
-    });
-}
-
 
 // Main Execution Flow
 async function run() {
     try {
-        console.log('Checking JMeter installation...');
+        console.log('Checking JMeter installation on master and slaves...');
         await new Promise((resolve, reject) => {
-            installJMeter('localhost', (err, result) => {
+            installJMeter(masterIp, (err, result) => {
                 if (err) return reject(err);
-                console.log(result || 'JMeter installation check complete.');
+                console.log(result || 'Master JMeter installation check complete.');
                 resolve();
             });
         });
 
-        console.log('Starting JMeter slaves...');
-        const slavePorts = [4001, 4002];
-        const serverPorts = [1099, 1100];
-        for (let index = 0; index < slaveIps.length; index++) {
-            const slavePort = slavePorts[index];
-            const serverPort = serverPorts[index];
-            console.log(`Processing slave ${index + 1} of ${slaveIps.length}`);
+        for (const slaveIp of slaveIps) {
             await new Promise((resolve, reject) => {
-                startJMeterSlave(slaveIps[index], serverPort, slavePort, (err) => {
+                installJMeter(slaveIp, (err, result) => {
                     if (err) return reject(err);
-                    console.log(`Slave started on ${slaveIps[index]}:${slavePort}`);
+                    console.log(result || `Slave ${slaveIp} JMeter installation check complete.`);
                     resolve();
                 });
             });
         }
 
         console.log('Configuring master with slave IPs...');
-        const remoteHosts = slaveIps.map((ip, index) => `${ip}:${slavePorts[index]}`);
         await new Promise((resolve, reject) => {
-            configureMaster(masterIp, remoteHosts, (err) => {
+            configureMaster(masterIp, slaveIps, (err) => {
                 if (err) return reject(err);
-                console.log('Master configured with remote hosts:', remoteHosts.join(', '));
+                console.log('Master configured with slave IPs:', slaveIps.join(', '));
                 resolve();
             });
         });
 
-        console.log('Starting the test on master...');
+        console.log('Starting tests on slaves...');
         await new Promise((resolve, reject) => {
-            startJMeterMaster(masterIp, (err) => {
+            startTestsOnSlaves(masterIp, (err) => {
                 if (err) return reject(err);
-                console.log('Test started on master');
+                console.log('Tests started successfully on slaves.');
                 resolve();
             });
         });
 
-        console.log('Execution flow completed successfully!');
+        console.log('Execution completed successfully!');
     } catch (error) {
         console.error('Error during execution:', error);
     }
