@@ -13,7 +13,7 @@ services:
       - TEST_PLAN_PATH=${TEST_PLAN_PATH}
       - RESULT_PATH=${RESULT_PATH}
     volumes:
-      - ./tests:/tests
+      - ./test-files:/test-files
     networks:
       jmeter-net:
         ipv4_address: 192.168.1.100
